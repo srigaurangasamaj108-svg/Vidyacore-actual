@@ -74,9 +74,12 @@ CREATE TABLE IF NOT EXISTS kalpataru (
 
     -- 🏷️ Semantic Info
     name TEXT NOT NULL,
+    name_devanagari TEXT, -- Sri Krishna in original script
+    slug TEXT NOT NULL, -- sri-krishna for clean URLs
     description TEXT,
     node_type kalpataru_node_type NOT NULL,
     seq INT NOT NULL,
+
     shastra_pramana shastra_pramana_enum,
 
     -- 📘 Grantha Context
@@ -90,7 +93,9 @@ CREATE TABLE IF NOT EXISTS kalpataru (
     updated_at TIMESTAMP DEFAULT NOW(),
 
     -- ⚖️ Constraints
+    CONSTRAINT uq_kalpataru_slug UNIQUE (slug),
     CONSTRAINT chk_root_rule CHECK (
+
         (node_type = 'MULA' AND parent_id IS NULL) OR
         (node_type <> 'MULA' AND parent_id IS NOT NULL)
     ),
@@ -129,8 +134,11 @@ CREATE INDEX IF NOT EXISTS idx_kalpataru_uuid_search ON kalpataru(uuid);
 CREATE OR REPLACE FUNCTION kalpataru_enforce_rules()
 RETURNS TRIGGER AS $$
 DECLARE
-  parent_record kalpataru;
+  parent_record vidya.kalpataru;
 BEGIN
+  -- Ensure search path includes vidya for ltree and internal calls
+  SET search_path TO vidya, public;
+
   IF NEW.parent_id IS NOT NULL THEN
     SELECT * INTO parent_record FROM kalpataru WHERE id = NEW.parent_id;
     IF parent_record IS NULL THEN

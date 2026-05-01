@@ -140,8 +140,11 @@ CREATE INDEX IF NOT EXISTS idx_vyakhya_taxonomy ON vyakhya_taxonomy_map(taxonomy
 CREATE OR REPLACE FUNCTION taxonomy_enforce_path()
 RETURNS TRIGGER AS $$
 DECLARE
-  parent_record shastric_taxonomy;
+  parent_record vidya.shastric_taxonomy;
 BEGIN
+  -- Ensure search path includes vidya for ltree and internal calls
+  SET search_path TO vidya, public;
+
   IF NEW.parent_id IS NOT NULL THEN
     SELECT * INTO parent_record FROM shastric_taxonomy WHERE id = NEW.parent_id;
     NEW.path := parent_record.path || NEW.id::text;

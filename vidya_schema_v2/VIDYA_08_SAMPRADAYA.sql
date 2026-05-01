@@ -60,8 +60,12 @@ CREATE INDEX IF NOT EXISTS idx_sampradaya_name_search ON sampradaya(name);
 -- Function: Hierarchy Path Enforcement
 CREATE OR REPLACE FUNCTION sampradaya_enforce_path()
 RETURNS TRIGGER AS $$
-DECLARE parent_record sampradaya;
+DECLARE
+  parent_record vidya.sampradaya;
 BEGIN
+  -- Ensure search path includes vidya for ltree and internal calls
+  SET search_path TO vidya, public;
+
   IF NEW.parent_id IS NOT NULL THEN
     SELECT * INTO parent_record FROM sampradaya WHERE id = NEW.parent_id;
     IF parent_record IS NULL THEN
