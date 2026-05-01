@@ -1,27 +1,27 @@
-const { pgTable, type AnyPgColumn, pgSchema, index, uniqueIndex, foreignKey, unique, check, bigserial, uuid, bigint, text, boolean, jsonb, timestamp, integer, doublePrecision, real, primaryKey  } = require("drizzle-orm/pg-core"
-const { sql  } = require("drizzle-orm"
+import { pgTable, type AnyPgColumn, pgSchema, index, uniqueIndex, foreignKey, unique, check, bigserial, uuid, bigint, text, boolean, jsonb, timestamp, integer, doublePrecision, real, primaryKey } from "drizzle-orm/pg-core"
+import { sql } from "drizzle-orm"
 
-const vidya = pgSchema("vidya");
-const authorshipRoleInVidya = vidya.enum("authorship_role", ['DRASHTA', 'KARTA', 'COMPILER', 'COMMENTATOR', 'TRANSLATOR', 'EDITOR'])
-const contentFlagTypeInVidya = vidya.enum("content_flag_type", ['DISPUTED', 'LOW_CONFIDENCE', 'AI_GENERATED', 'REQUIRES_REVIEW'])
-const editionTypeInVidya = vidya.enum("edition_type", ['MANUSCRIPT', 'CRITICAL_EDITION', 'PRINTED', 'DIGITAL', 'ORAL_TRADITION'])
-const granthaUnitEnumInVidya = vidya.enum("grantha_unit_enum", ['shastra', 'parva', 'upaparva', 'kanda', 'skandha', 'sarga', 'adhyaya', 'adhikarana', 'mandala', 'sukta', 'rc', 'kanda_veda', 'prapathaka', 'anuvaka', 'arcika', 'gana', 'valli', 'brahmana_section', 'khanda', 'pada', 'sutra', 'ahnika', 'patala', 'sthana', 'prakarana', 'ullasa', 'pariccheda', 'prasna', 'sloka', 'mantra', 'sutra_unit', 'section'])
-const kalpataruNodeTypeInVidya = vidya.enum("kalpataru_node_type", ['MULA', 'SKANDHA', 'SHAKHA', 'PRASHAKHA', 'PALLAVA'])
-const mulaRelationTypeInVidya = vidya.enum("mula_relation_type", ['CITES', 'QUOTES', 'PARALLEL', 'EXPANDS', 'SUMMARIZES', 'REFUTES', 'SUPPORTS'])
-const mulaScriptInVidya = vidya.enum("mula_script", ['DEVANAGARI', 'BENGALI', 'PALI', 'TAMIL', 'TELUGU', 'KANNADA', 'GURMUKHI', 'IAST', 'BRAHMI', 'GRANTHA', 'SHARADA'])
-const mulaTypeInVidya = vidya.enum("mula_type", ['SHLOKA', 'MANTRA', 'SUTRA', 'INVOCATION', 'TITLE', 'COLOPHON', 'DOHA', 'ABHANGA', 'PADYA', 'GADYA', 'OTHER'])
-const personRelationTypeInVidya = vidya.enum("person_relation_type", ['DISCIPLE_OF', 'TEACHER_OF', 'INFLUENCED_BY', 'CONTEMPORARY'])
-const personTypeInVidya = vidya.enum("person_type", ['RISHI', 'ACHARYA', 'KAVI', 'COMMENTATOR', 'TRANSLATOR', 'EDITOR', 'SCRIBE'])
-const relationTypeInVidya = vidya.enum("relation_type", ['CITES', 'QUOTES', 'PARALLEL', 'EXPANDS', 'SUMMARIZES', 'REFUTES', 'SUPPORTS'])
-const shastraPramanaEnumInVidya = vidya.enum("shastra_pramana_enum", ['SHRUTI', 'SMRITI', 'ITIHASA_PURANA', 'VEDANGA', 'UPANGA', 'UPAVEDA', 'AGAMA'])
-const taxonomyClassInVidya = vidya.enum("taxonomy_class", ['CONCEPT', 'PRACTICE', 'ENTITY', 'RELATION', 'QUALITY'])
-const taxonomyDomainEnumInVidya = vidya.enum("taxonomy_domain_enum", ['ONTOLOGY', 'SADHANA', 'RITUAL', 'ETHICS', 'SOCIETY', 'SCIENCE'])
-const userRoleInVidya = vidya.enum("user_role", ['ADMIN', 'SCHOLAR', 'SEEKER', 'GUEST'])
-const vyakhyaPartInVidya = vidya.enum("vyakhya_part", ['AVATARIKA', 'VYAKHYANA', 'UPASAMHARA', 'TIPPNI'])
-const vyakhyaTypeInVidya = vidya.enum("vyakhya_type", ['mula', 'bhashya', 'tika', 'tippani', 'tippani_extended', 'shabdartha', 'anvaya', 'padaccheda', 'vigraha', 'bhavartha', 'tatparya', 'arthavistara', 'vivarana', 'vyakhyana', 'anuvada', 'bhasantara', 'bhavanuvada', 'sutra_summary', 'key_points', 'shirshaka', 'upashirshaka', 'pushpika'])
+export const vidya = pgSchema("vidya");
+export const authorshipRoleInVidya = vidya.enum("authorship_role", ['DRASHTA', 'KARTA', 'COMPILER', 'COMMENTATOR', 'TRANSLATOR', 'EDITOR'])
+export const contentFlagTypeInVidya = vidya.enum("content_flag_type", ['DISPUTED', 'LOW_CONFIDENCE', 'AI_GENERATED', 'REQUIRES_REVIEW'])
+export const editionTypeInVidya = vidya.enum("edition_type", ['MANUSCRIPT', 'CRITICAL_EDITION', 'PRINTED', 'DIGITAL', 'ORAL_TRADITION'])
+export const granthaUnitEnumInVidya = vidya.enum("grantha_unit_enum", ['shastra', 'parva', 'upaparva', 'kanda', 'skandha', 'sarga', 'adhyaya', 'adhikarana', 'mandala', 'sukta', 'rc', 'kanda_veda', 'prapathaka', 'anuvaka', 'arcika', 'gana', 'valli', 'brahmana_section', 'khanda', 'pada', 'sutra', 'ahnika', 'patala', 'sthana', 'prakarana', 'ullasa', 'pariccheda', 'prasna', 'sloka', 'mantra', 'sutra_unit', 'section'])
+export const kalpataruNodeTypeInVidya = vidya.enum("kalpataru_node_type", ['MULA', 'SKANDHA', 'SHAKHA', 'PRASHAKHA', 'PALLAVA'])
+export const mulaRelationTypeInVidya = vidya.enum("mula_relation_type", ['CITES', 'QUOTES', 'PARALLEL', 'EXPANDS', 'SUMMARIZES', 'REFUTES', 'SUPPORTS'])
+export const mulaScriptInVidya = vidya.enum("mula_script", ['DEVANAGARI', 'BENGALI', 'PALI', 'TAMIL', 'TELUGU', 'KANNADA', 'GURMUKHI', 'IAST', 'BRAHMI', 'GRANTHA', 'SHARADA'])
+export const mulaTypeInVidya = vidya.enum("mula_type", ['SHLOKA', 'MANTRA', 'SUTRA', 'INVOCATION', 'TITLE', 'COLOPHON', 'DOHA', 'ABHANGA', 'PADYA', 'GADYA', 'OTHER'])
+export const personRelationTypeInVidya = vidya.enum("person_relation_type", ['DISCIPLE_OF', 'TEACHER_OF', 'INFLUENCED_BY', 'CONTEMPORARY'])
+export const personTypeInVidya = vidya.enum("person_type", ['RISHI', 'ACHARYA', 'KAVI', 'COMMENTATOR', 'TRANSLATOR', 'EDITOR', 'SCRIBE'])
+export const relationTypeInVidya = vidya.enum("relation_type", ['CITES', 'QUOTES', 'PARALLEL', 'EXPANDS', 'SUMMARIZES', 'REFUTES', 'SUPPORTS'])
+export const shastraPramanaEnumInVidya = vidya.enum("shastra_pramana_enum", ['SHRUTI', 'SMRITI', 'ITIHASA_PURANA', 'VEDANGA', 'UPANGA', 'UPAVEDA', 'AGAMA'])
+export const taxonomyClassInVidya = vidya.enum("taxonomy_class", ['CONCEPT', 'PRACTICE', 'ENTITY', 'RELATION', 'QUALITY'])
+export const taxonomyDomainEnumInVidya = vidya.enum("taxonomy_domain_enum", ['ONTOLOGY', 'SADHANA', 'RITUAL', 'ETHICS', 'SOCIETY', 'SCIENCE'])
+export const userRoleInVidya = vidya.enum("user_role", ['ADMIN', 'SCHOLAR', 'SEEKER', 'GUEST'])
+export const vyakhyaPartInVidya = vidya.enum("vyakhya_part", ['AVATARIKA', 'VYAKHYANA', 'UPASAMHARA', 'TIPPNI'])
+export const vyakhyaTypeInVidya = vidya.enum("vyakhya_type", ['mula', 'bhashya', 'tika', 'tippani', 'tippani_extended', 'shabdartha', 'anvaya', 'padaccheda', 'vigraha', 'bhavartha', 'tatparya', 'arthavistara', 'vivarana', 'vyakhyana', 'anuvada', 'bhasantara', 'bhavanuvada', 'sutra_summary', 'key_points', 'shirshaka', 'upashirshaka', 'pushpika'])
 
 
-const sampradayaInVidya = vidya.table("sampradaya", {
+export const sampradayaInVidya = vidya.table("sampradaya", {
 	id: bigserial({ mode: "bigint" }).primaryKey().notNull(),
 	uuid: uuid().defaultRandom().notNull(),
 	// You can use { mode: "bigint" } if numbers are exceeding js number limitations
@@ -59,7 +59,7 @@ const sampradayaInVidya = vidya.table("sampradaya", {
 	check("chk_sampradaya_no_self", sql`(id IS NULL) OR (parent_id IS NULL) OR (id <> parent_id)`),
 ]);
 
-const usersInVidya = vidya.table("users", {
+export const usersInVidya = vidya.table("users", {
 	id: bigserial({ mode: "bigint" }).primaryKey().notNull(),
 	uuid: uuid().defaultRandom().notNull(),
 	username: text().notNull(),
@@ -79,7 +79,7 @@ const usersInVidya = vidya.table("users", {
 	check("chk_email_format", sql`email ~* '^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+[.][A-Za-z]+$'::text`),
 ]);
 
-const kalpataruInVidya = vidya.table("kalpataru", {
+export const kalpataruInVidya = vidya.table("kalpataru", {
 	id: bigserial({ mode: "bigint" }).primaryKey().notNull(),
 	uuid: uuid().defaultRandom().notNull(),
 	// You can use { mode: "bigint" } if numbers are exceeding js number limitations
@@ -125,7 +125,7 @@ const kalpataruInVidya = vidya.table("kalpataru", {
 	check("chk_no_self_parent", sql`(id IS NULL) OR (parent_id IS NULL) OR (id <> parent_id)`),
 ]);
 
-const mulaRelationInVidya = vidya.table("mula_relation", {
+export const mulaRelationInVidya = vidya.table("mula_relation", {
 	id: bigserial({ mode: "bigint" }).primaryKey().notNull(),
 	uuid: uuid().defaultRandom().notNull(),
 	// You can use { mode: "bigint" } if numbers are exceeding js number limitations
@@ -176,7 +176,7 @@ const mulaRelationInVidya = vidya.table("mula_relation", {
 	check("chk_no_self_relation", sql`from_mula_id <> to_mula_id`),
 ]);
 
-const mulaInVidya = vidya.table("mula", {
+export const mulaInVidya = vidya.table("mula", {
 	id: bigserial({ mode: "bigint" }).primaryKey().notNull(),
 	uuid: uuid().defaultRandom().notNull(),
 	// You can use { mode: "bigint" } if numbers are exceeding js number limitations
@@ -223,7 +223,7 @@ const mulaInVidya = vidya.table("mula", {
 	check("chk_mula_size_guard", sql`length(text_mula) <= 10000`),
 ]);
 
-const vyakhyaInVidya = vidya.table("vyakhya", {
+export const vyakhyaInVidya = vidya.table("vyakhya", {
 	id: bigserial({ mode: "bigint" }).primaryKey().notNull(),
 	uuid: uuid().defaultRandom().notNull(),
 	vyakhyaType: vyakhyaTypeInVidya("vyakhya_type").notNull(),
@@ -273,7 +273,7 @@ const vyakhyaInVidya = vidya.table("vyakhya", {
 	check("chk_vyakhya_text", sql`length(TRIM(BOTH FROM text_vyakhya)) > 0`),
 ]);
 
-const vedicPersonInVidya = vidya.table("vedic_person", {
+export const vedicPersonInVidya = vidya.table("vedic_person", {
 	id: bigserial({ mode: "bigint" }).primaryKey().notNull(),
 	uuid: uuid().defaultRandom().notNull(),
 	name: text().notNull(),
@@ -302,7 +302,7 @@ const vedicPersonInVidya = vidya.table("vedic_person", {
 		}),
 ]);
 
-const shastricTaxonomyInVidya = vidya.table("shastric_taxonomy", {
+export const shastricTaxonomyInVidya = vidya.table("shastric_taxonomy", {
 	id: bigserial({ mode: "bigint" }).primaryKey().notNull(),
 	uuid: uuid().defaultRandom().notNull(),
 	slug: text().notNull(),
@@ -333,7 +333,7 @@ const shastricTaxonomyInVidya = vidya.table("shastric_taxonomy", {
 	unique("uq_taxonomy_slug_unique").on(table.slug),
 ]);
 
-const taxonomyAliasInVidya = vidya.table("taxonomy_alias", {
+export const taxonomyAliasInVidya = vidya.table("taxonomy_alias", {
 	id: bigserial({ mode: "bigint" }).primaryKey().notNull(),
 	// You can use { mode: "bigint" } if numbers are exceeding js number limitations
 	taxonomyId: bigint("taxonomy_id", { mode: "number" }),
@@ -347,7 +347,7 @@ const taxonomyAliasInVidya = vidya.table("taxonomy_alias", {
 		}).onDelete("cascade"),
 ]);
 
-const mulaEmbeddingInVidya = vidya.table("mula_embedding", {
+export const mulaEmbeddingInVidya = vidya.table("mula_embedding", {
 	id: bigserial({ mode: "bigint" }).primaryKey().notNull(),
 	// You can use { mode: "bigint" } if numbers are exceeding js number limitations
 	mulaId: bigint("mula_id", { mode: "number" }).notNull(),
@@ -368,7 +368,7 @@ const mulaEmbeddingInVidya = vidya.table("mula_embedding", {
 	check("chk_mula_embedding_not_null", sql`embedding IS NOT NULL`),
 ]);
 
-const personRelationInVidya = vidya.table("person_relation", {
+export const personRelationInVidya = vidya.table("person_relation", {
 	id: bigserial({ mode: "bigint" }).primaryKey().notNull(),
 	uuid: uuid().defaultRandom().notNull(),
 	// You can use { mode: "bigint" } if numbers are exceeding js number limitations
@@ -399,7 +399,7 @@ const personRelationInVidya = vidya.table("person_relation", {
 	check("chk_person_no_self", sql`from_person_id <> to_person_id`),
 ]);
 
-const vyakhyaEmbeddingInVidya = vidya.table("vyakhya_embedding", {
+export const vyakhyaEmbeddingInVidya = vidya.table("vyakhya_embedding", {
 	id: bigserial({ mode: "bigint" }).primaryKey().notNull(),
 	// You can use { mode: "bigint" } if numbers are exceeding js number limitations
 	vyakhyaId: bigint("vyakhya_id", { mode: "number" }).notNull(),
@@ -422,7 +422,7 @@ const vyakhyaEmbeddingInVidya = vidya.table("vyakhya_embedding", {
 	check("chk_vyakhya_embedding_not_null", sql`embedding IS NOT NULL`),
 ]);
 
-const contentFlagInVidya = vidya.table("content_flag", {
+export const contentFlagInVidya = vidya.table("content_flag", {
 	id: bigserial({ mode: "bigint" }).primaryKey().notNull(),
 	entityType: text("entity_type").notNull(),
 	// You can use { mode: "bigint" } if numbers are exceeding js number limitations
@@ -434,7 +434,7 @@ const contentFlagInVidya = vidya.table("content_flag", {
 	index("idx_flag_entity").using("btree", table.entityType.asc().nullsLast().op("int8_ops"), table.entityId.asc().nullsLast().op("int8_ops")),
 ]);
 
-const searchQueryLogInVidya = vidya.table("search_query_log", {
+export const searchQueryLogInVidya = vidya.table("search_query_log", {
 	id: bigserial({ mode: "bigint" }).primaryKey().notNull(),
 	query: text().notNull(),
 	// TODO: failed to parse database type 'vidya.vector(1536)'
@@ -458,7 +458,7 @@ const searchQueryLogInVidya = vidya.table("search_query_log", {
 		}),
 ]);
 
-const languageInVidya = vidya.table("language", {
+export const languageInVidya = vidya.table("language", {
 	code: text().primaryKey().notNull(),
 	name: text().notNull(),
 	endonym: text(),
@@ -469,7 +469,7 @@ const languageInVidya = vidya.table("language", {
 	check("chk_language_code_format", sql`code ~ '^[a-z]{2}$'::text`),
 ]);
 
-const sourceCitationInVidya = vidya.table("source_citation", {
+export const sourceCitationInVidya = vidya.table("source_citation", {
 	id: bigserial({ mode: "bigint" }).primaryKey().notNull(),
 	uuid: uuid().defaultRandom().notNull(),
 	title: text().notNull(),
@@ -482,7 +482,7 @@ const sourceCitationInVidya = vidya.table("source_citation", {
 	uniqueIndex("uq_source_citation_uuid").using("btree", table.uuid.asc().nullsLast().op("uuid_ops")),
 ]);
 
-const kalpataruContentInVidya = vidya.table("kalpataru_content", {
+export const kalpataruContentInVidya = vidya.table("kalpataru_content", {
 	id: bigserial({ mode: "bigint" }).primaryKey().notNull(),
 	uuid: uuid().defaultRandom().notNull(),
 	// You can use { mode: "bigint" } if numbers are exceeding js number limitations
@@ -516,7 +516,7 @@ const kalpataruContentInVidya = vidya.table("kalpataru_content", {
 	unique("kalpataru_content_kalpataru_id_key").on(table.kalpataruId),
 ]);
 
-const editionInVidya = vidya.table("edition", {
+export const editionInVidya = vidya.table("edition", {
 	id: bigserial({ mode: "bigint" }).primaryKey().notNull(),
 	uuid: uuid().defaultRandom().notNull(),
 	name: text().notNull(),
@@ -548,7 +548,7 @@ const editionInVidya = vidya.table("edition", {
 		}),
 ]);
 
-const kalpataruPersonRoleInVidya = vidya.table("kalpataru_person_role", {
+export const kalpataruPersonRoleInVidya = vidya.table("kalpataru_person_role", {
 	id: bigserial({ mode: "bigint" }).primaryKey().notNull(),
 	uuid: uuid().defaultRandom().notNull(),
 	// You can use { mode: "bigint" } if numbers are exceeding js number limitations
@@ -595,7 +595,7 @@ const kalpataruPersonRoleInVidya = vidya.table("kalpataru_person_role", {
 	check("chk_drashta_no_sampradaya", sql`NOT ((role = 'DRASHTA'::vidya.authorship_role) AND (sampradaya_id IS NOT NULL))`),
 ]);
 
-const citationLinkInVidya = vidya.table("citation_link", {
+export const citationLinkInVidya = vidya.table("citation_link", {
 	// You can use { mode: "bigint" } if numbers are exceeding js number limitations
 	citationId: bigint("citation_id", { mode: "number" }).notNull(),
 	entityType: text("entity_type").notNull(),
@@ -612,7 +612,7 @@ const citationLinkInVidya = vidya.table("citation_link", {
 	primaryKey({ columns: [table.citationId, table.entityType, table.entityId], name: "citation_link_pkey"}),
 ]);
 
-const vyakhyaMulaMapInVidya = vidya.table("vyakhya_mula_map", {
+export const vyakhyaMulaMapInVidya = vidya.table("vyakhya_mula_map", {
 	// You can use { mode: "bigint" } if numbers are exceeding js number limitations
 	vyakhyaId: bigint("vyakhya_id", { mode: "number" }).notNull(),
 	// You can use { mode: "bigint" } if numbers are exceeding js number limitations
@@ -637,7 +637,7 @@ const vyakhyaMulaMapInVidya = vidya.table("vyakhya_mula_map", {
 	check("vyakhya_mula_map_confidence_score_check", sql`(confidence_score >= 0) AND (confidence_score <= 100)`),
 ]);
 
-const vyakhyaTaxonomyMapInVidya = vidya.table("vyakhya_taxonomy_map", {
+export const vyakhyaTaxonomyMapInVidya = vidya.table("vyakhya_taxonomy_map", {
 	// You can use { mode: "bigint" } if numbers are exceeding js number limitations
 	vyakhyaId: bigint("vyakhya_id", { mode: "number" }).notNull(),
 	// You can use { mode: "bigint" } if numbers are exceeding js number limitations
@@ -663,7 +663,7 @@ const vyakhyaTaxonomyMapInVidya = vidya.table("vyakhya_taxonomy_map", {
 	check("vyakhya_taxonomy_map_confidence_score_check", sql`(confidence_score >= 1) AND (confidence_score <= 100)`),
 ]);
 
-const mulaTaxonomyMapInVidya = vidya.table("mula_taxonomy_map", {
+export const mulaTaxonomyMapInVidya = vidya.table("mula_taxonomy_map", {
 	// You can use { mode: "bigint" } if numbers are exceeding js number limitations
 	mulaId: bigint("mula_id", { mode: "number" }).notNull(),
 	// You can use { mode: "bigint" } if numbers are exceeding js number limitations
@@ -696,7 +696,3 @@ const mulaTaxonomyMapInVidya = vidya.table("mula_taxonomy_map", {
 	primaryKey({ columns: [table.mulaId, table.taxonomyId], name: "mula_taxonomy_map_pkey"}),
 	check("mula_taxonomy_map_confidence_score_check", sql`(confidence_score >= 1) AND (confidence_score <= 100)`),
 ]);
-
-module.exports = { ...exports };
-
-module.exports = { vidya, authorshipRoleInVidya, contentFlagTypeInVidya, editionTypeInVidya, granthaUnitEnumInVidya, kalpataruNodeTypeInVidya, mulaRelationTypeInVidya, mulaScriptInVidya, mulaTypeInVidya, personRelationTypeInVidya, personTypeInVidya, relationTypeInVidya, shastraPramanaEnumInVidya, taxonomyClassInVidya, taxonomyDomainEnumInVidya, userRoleInVidya, vyakhyaPartInVidya, vyakhyaTypeInVidya, sampradayaInVidya, usersInVidya, kalpataruInVidya, mulaRelationInVidya, mulaInVidya, vyakhyaInVidya, vedicPersonInVidya, shastricTaxonomyInVidya, taxonomyAliasInVidya, mulaEmbeddingInVidya, personRelationInVidya, vyakhyaEmbeddingInVidya, contentFlagInVidya, searchQueryLogInVidya, languageInVidya, sourceCitationInVidya, kalpataruContentInVidya, editionInVidya, kalpataruPersonRoleInVidya, citationLinkInVidya, vyakhyaMulaMapInVidya, vyakhyaTaxonomyMapInVidya, mulaTaxonomyMapInVidya };

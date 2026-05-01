@@ -1,7 +1,7 @@
-const { relations  } = require("drizzle-orm/relations");
-const { sampradayaInVidya, vedicPersonInVidya, kalpataruInVidya, mulaInVidya, mulaRelationInVidya, editionInVidya, vyakhyaInVidya, languageInVidya, shastricTaxonomyInVidya, taxonomyAliasInVidya, mulaEmbeddingInVidya, personRelationInVidya, vyakhyaEmbeddingInVidya, searchQueryLogInVidya, kalpataruContentInVidya, kalpataruPersonRoleInVidya, sourceCitationInVidya, citationLinkInVidya, vyakhyaMulaMapInVidya, vyakhyaTaxonomyMapInVidya, mulaTaxonomyMapInVidya  } = require("./schema");
+import { relations } from "drizzle-orm/relations";
+import { sampradayaInVidya, vedicPersonInVidya, kalpataruInVidya, mulaInVidya, mulaRelationInVidya, editionInVidya, vyakhyaInVidya, languageInVidya, shastricTaxonomyInVidya, taxonomyAliasInVidya, mulaEmbeddingInVidya, personRelationInVidya, vyakhyaEmbeddingInVidya, searchQueryLogInVidya, kalpataruContentInVidya, kalpataruPersonRoleInVidya, sourceCitationInVidya, citationLinkInVidya, vyakhyaMulaMapInVidya, vyakhyaTaxonomyMapInVidya, mulaTaxonomyMapInVidya } from "./schema";
 
-const sampradayaInVidyaRelations = relations(sampradayaInVidya, ({one, many}) => ({
+export const sampradayaInVidyaRelations = relations(sampradayaInVidya, ({one, many}) => ({
 	sampradayaInVidya: one(sampradayaInVidya, {
 		fields: [sampradayaInVidya.parentId],
 		references: [sampradayaInVidya.id],
@@ -27,7 +27,7 @@ const sampradayaInVidyaRelations = relations(sampradayaInVidya, ({one, many}) =>
 	kalpataruPersonRoleInVidyas: many(kalpataruPersonRoleInVidya),
 }));
 
-const vedicPersonInVidyaRelations = relations(vedicPersonInVidya, ({one, many}) => ({
+export const vedicPersonInVidyaRelations = relations(vedicPersonInVidya, ({one, many}) => ({
 	sampradayaInVidyas_mulaAcharyaId: many(sampradayaInVidya, {
 		relationName: "sampradayaInVidya_mulaAcharyaId_vedicPersonInVidya_id"
 	}),
@@ -55,7 +55,7 @@ const vedicPersonInVidyaRelations = relations(vedicPersonInVidya, ({one, many}) 
 	kalpataruPersonRoleInVidyas: many(kalpataruPersonRoleInVidya),
 }));
 
-const kalpataruInVidyaRelations = relations(kalpataruInVidya, ({one, many}) => ({
+export const kalpataruInVidyaRelations = relations(kalpataruInVidya, ({one, many}) => ({
 	kalpataruInVidya_parentId: one(kalpataruInVidya, {
 		fields: [kalpataruInVidya.parentId],
 		references: [kalpataruInVidya.id],
@@ -82,7 +82,7 @@ const kalpataruInVidyaRelations = relations(kalpataruInVidya, ({one, many}) => (
 	kalpataruPersonRoleInVidyas: many(kalpataruPersonRoleInVidya),
 }));
 
-const mulaRelationInVidyaRelations = relations(mulaRelationInVidya, ({one}) => ({
+export const mulaRelationInVidyaRelations = relations(mulaRelationInVidya, ({one}) => ({
 	mulaInVidya_fromMulaId: one(mulaInVidya, {
 		fields: [mulaRelationInVidya.fromMulaId],
 		references: [mulaInVidya.id],
@@ -105,7 +105,7 @@ const mulaRelationInVidyaRelations = relations(mulaRelationInVidya, ({one}) => (
 	}),
 }));
 
-const mulaInVidyaRelations = relations(mulaInVidya, ({one, many}) => ({
+export const mulaInVidyaRelations = relations(mulaInVidya, ({one, many}) => ({
 	mulaRelationInVidyas_fromMulaId: many(mulaRelationInVidya, {
 		relationName: "mulaRelationInVidya_fromMulaId_mulaInVidya_id"
 	}),
@@ -132,7 +132,7 @@ const mulaInVidyaRelations = relations(mulaInVidya, ({one, many}) => ({
 	mulaTaxonomyMapInVidyas: many(mulaTaxonomyMapInVidya),
 }));
 
-const editionInVidyaRelations = relations(editionInVidya, ({one, many}) => ({
+export const editionInVidyaRelations = relations(editionInVidya, ({one, many}) => ({
 	mulaRelationInVidyas_fromEditionId: many(mulaRelationInVidya, {
 		relationName: "mulaRelationInVidya_fromEditionId_editionInVidya_id"
 	}),
@@ -157,7 +157,7 @@ const editionInVidyaRelations = relations(editionInVidya, ({one, many}) => ({
 	mulaTaxonomyMapInVidyas: many(mulaTaxonomyMapInVidya),
 }));
 
-const vyakhyaInVidyaRelations = relations(vyakhyaInVidya, ({one, many}) => ({
+export const vyakhyaInVidyaRelations = relations(vyakhyaInVidya, ({one, many}) => ({
 	vedicPersonInVidya: one(vedicPersonInVidya, {
 		fields: [vyakhyaInVidya.authorId],
 		references: [vedicPersonInVidya.id]
@@ -180,12 +180,12 @@ const vyakhyaInVidyaRelations = relations(vyakhyaInVidya, ({one, many}) => ({
 	vyakhyaTaxonomyMapInVidyas: many(vyakhyaTaxonomyMapInVidya),
 }));
 
-const languageInVidyaRelations = relations(languageInVidya, ({many}) => ({
+export const languageInVidyaRelations = relations(languageInVidya, ({many}) => ({
 	vyakhyaInVidyas: many(vyakhyaInVidya),
 	editionInVidyas: many(editionInVidya),
 }));
 
-const shastricTaxonomyInVidyaRelations = relations(shastricTaxonomyInVidya, ({one, many}) => ({
+export const shastricTaxonomyInVidyaRelations = relations(shastricTaxonomyInVidya, ({one, many}) => ({
 	shastricTaxonomyInVidya: one(shastricTaxonomyInVidya, {
 		fields: [shastricTaxonomyInVidya.parentId],
 		references: [shastricTaxonomyInVidya.id],
@@ -199,21 +199,21 @@ const shastricTaxonomyInVidyaRelations = relations(shastricTaxonomyInVidya, ({on
 	mulaTaxonomyMapInVidyas: many(mulaTaxonomyMapInVidya),
 }));
 
-const taxonomyAliasInVidyaRelations = relations(taxonomyAliasInVidya, ({one}) => ({
+export const taxonomyAliasInVidyaRelations = relations(taxonomyAliasInVidya, ({one}) => ({
 	shastricTaxonomyInVidya: one(shastricTaxonomyInVidya, {
 		fields: [taxonomyAliasInVidya.taxonomyId],
 		references: [shastricTaxonomyInVidya.id]
 	}),
 }));
 
-const mulaEmbeddingInVidyaRelations = relations(mulaEmbeddingInVidya, ({one}) => ({
+export const mulaEmbeddingInVidyaRelations = relations(mulaEmbeddingInVidya, ({one}) => ({
 	mulaInVidya: one(mulaInVidya, {
 		fields: [mulaEmbeddingInVidya.mulaId],
 		references: [mulaInVidya.id]
 	}),
 }));
 
-const personRelationInVidyaRelations = relations(personRelationInVidya, ({one}) => ({
+export const personRelationInVidyaRelations = relations(personRelationInVidya, ({one}) => ({
 	vedicPersonInVidya_fromPersonId: one(vedicPersonInVidya, {
 		fields: [personRelationInVidya.fromPersonId],
 		references: [vedicPersonInVidya.id],
@@ -226,14 +226,14 @@ const personRelationInVidyaRelations = relations(personRelationInVidya, ({one}) 
 	}),
 }));
 
-const vyakhyaEmbeddingInVidyaRelations = relations(vyakhyaEmbeddingInVidya, ({one}) => ({
+export const vyakhyaEmbeddingInVidyaRelations = relations(vyakhyaEmbeddingInVidya, ({one}) => ({
 	vyakhyaInVidya: one(vyakhyaInVidya, {
 		fields: [vyakhyaEmbeddingInVidya.vyakhyaId],
 		references: [vyakhyaInVidya.id]
 	}),
 }));
 
-const searchQueryLogInVidyaRelations = relations(searchQueryLogInVidya, ({one}) => ({
+export const searchQueryLogInVidyaRelations = relations(searchQueryLogInVidya, ({one}) => ({
 	mulaInVidya: one(mulaInVidya, {
 		fields: [searchQueryLogInVidya.clickedMulaId],
 		references: [mulaInVidya.id]
@@ -244,7 +244,7 @@ const searchQueryLogInVidyaRelations = relations(searchQueryLogInVidya, ({one}) 
 	}),
 }));
 
-const kalpataruContentInVidyaRelations = relations(kalpataruContentInVidya, ({one}) => ({
+export const kalpataruContentInVidyaRelations = relations(kalpataruContentInVidya, ({one}) => ({
 	kalpataruInVidya: one(kalpataruInVidya, {
 		fields: [kalpataruContentInVidya.kalpataruId],
 		references: [kalpataruInVidya.id]
@@ -261,7 +261,7 @@ const kalpataruContentInVidyaRelations = relations(kalpataruContentInVidya, ({on
 	}),
 }));
 
-const kalpataruPersonRoleInVidyaRelations = relations(kalpataruPersonRoleInVidya, ({one}) => ({
+export const kalpataruPersonRoleInVidyaRelations = relations(kalpataruPersonRoleInVidya, ({one}) => ({
 	kalpataruInVidya: one(kalpataruInVidya, {
 		fields: [kalpataruPersonRoleInVidya.kalpataruId],
 		references: [kalpataruInVidya.id]
@@ -280,18 +280,18 @@ const kalpataruPersonRoleInVidyaRelations = relations(kalpataruPersonRoleInVidya
 	}),
 }));
 
-const citationLinkInVidyaRelations = relations(citationLinkInVidya, ({one}) => ({
+export const citationLinkInVidyaRelations = relations(citationLinkInVidya, ({one}) => ({
 	sourceCitationInVidya: one(sourceCitationInVidya, {
 		fields: [citationLinkInVidya.citationId],
 		references: [sourceCitationInVidya.id]
 	}),
 }));
 
-const sourceCitationInVidyaRelations = relations(sourceCitationInVidya, ({many}) => ({
+export const sourceCitationInVidyaRelations = relations(sourceCitationInVidya, ({many}) => ({
 	citationLinkInVidyas: many(citationLinkInVidya),
 }));
 
-const vyakhyaMulaMapInVidyaRelations = relations(vyakhyaMulaMapInVidya, ({one}) => ({
+export const vyakhyaMulaMapInVidyaRelations = relations(vyakhyaMulaMapInVidya, ({one}) => ({
 	vyakhyaInVidya: one(vyakhyaInVidya, {
 		fields: [vyakhyaMulaMapInVidya.vyakhyaId],
 		references: [vyakhyaInVidya.id]
@@ -302,7 +302,7 @@ const vyakhyaMulaMapInVidyaRelations = relations(vyakhyaMulaMapInVidya, ({one}) 
 	}),
 }));
 
-const vyakhyaTaxonomyMapInVidyaRelations = relations(vyakhyaTaxonomyMapInVidya, ({one}) => ({
+export const vyakhyaTaxonomyMapInVidyaRelations = relations(vyakhyaTaxonomyMapInVidya, ({one}) => ({
 	vyakhyaInVidya: one(vyakhyaInVidya, {
 		fields: [vyakhyaTaxonomyMapInVidya.vyakhyaId],
 		references: [vyakhyaInVidya.id]
@@ -313,7 +313,7 @@ const vyakhyaTaxonomyMapInVidyaRelations = relations(vyakhyaTaxonomyMapInVidya, 
 	}),
 }));
 
-const mulaTaxonomyMapInVidyaRelations = relations(mulaTaxonomyMapInVidya, ({one}) => ({
+export const mulaTaxonomyMapInVidyaRelations = relations(mulaTaxonomyMapInVidya, ({one}) => ({
 	mulaInVidya: one(mulaInVidya, {
 		fields: [mulaTaxonomyMapInVidya.mulaId],
 		references: [mulaInVidya.id]
@@ -327,4 +327,3 @@ const mulaTaxonomyMapInVidyaRelations = relations(mulaTaxonomyMapInVidya, ({one}
 		references: [editionInVidya.id]
 	}),
 }));
-module.exports = { sampradayaInVidyaRelations, vedicPersonInVidyaRelations, kalpataruInVidyaRelations, mulaRelationInVidyaRelations, mulaInVidyaRelations, editionInVidyaRelations, vyakhyaInVidyaRelations, languageInVidyaRelations, shastricTaxonomyInVidyaRelations, taxonomyAliasInVidyaRelations, mulaEmbeddingInVidyaRelations, personRelationInVidyaRelations, vyakhyaEmbeddingInVidyaRelations, searchQueryLogInVidyaRelations, kalpataruContentInVidyaRelations, kalpataruPersonRoleInVidyaRelations, citationLinkInVidyaRelations, sourceCitationInVidyaRelations, vyakhyaMulaMapInVidyaRelations, vyakhyaTaxonomyMapInVidyaRelations, mulaTaxonomyMapInVidyaRelations };
