@@ -1,49 +1,62 @@
-# Git Save & Rename Guide 💾🚀
+# 💾 VidyaCore: Git Milestones & Success Points Guide
 
-Follow these steps to rename your project to **VidyaCore** and save it to a new Git repository.
+This guide documents the professional workflow for marking **Success Points** in your project, ensuring you can always "teleport" back to a perfectly working state.
 
 ---
 
-## 1. Rename the Project
-In your terminal, navigate to the folder above your project and rename it:
+## 🎯 1. What is a "Success Point"?
+A Success Point is a **Git Tag**. Unlike a normal commit, a tag is a permanent marker on a specific version of your code. It marks a major architectural milestone.
+
+---
+
+## 🚀 2. Current Success Points
+The following milestones are currently locked in:
+
+| Tag Name | Date | Description |
+| :--- | :--- | :--- |
+| **`v1.0.0-foundation-complete`** | 2026-05-01 | **Master Foundation**: 15-file SQL schema, Parallel Drizzle Engine, and organized docs. |
+
+---
+
+## 🛠️ 3. How to Mark a New Success Point
+When you complete a major feature (e.g., Auth Migration), run these commands:
+
 ```bash
-mv TrackMyFunds VidyaCore
+# 1. Create a "Success Point" (Annotated Tag)
+git tag -a v1.1.0-auth-migration -m "Description of what works now"
+
+# 2. Push the tag to GitHub
+git push origin v1.1.0-auth-migration
 ```
 
 ---
 
-## 2. Initialize the New Git Repo
-Inside the `VidyaCore` folder, run these commands:
+## 🔙 4. How to Return to a Success Point
+If something breaks and you need to see exactly how the code looked at a previous milestone:
+
+### A. View Only (Detached HEAD)
+Use this if you just want to "look" at the old code:
+```bash
+git checkout v1.0.0-foundation-complete
+```
+
+### B. Roll Back (Hard Reset)
+**CAUTION**: This deletes any work done *after* the tag to bring you back to the success point exactly:
+```bash
+git reset --hard v1.0.0-foundation-complete
+```
+
+---
+
+## 📝 5. Standard Save Workflow
+For daily work between milestones, use the standard save:
 
 ```bash
-# 1. Initialize Git
-git init
-
-# 2. Add all files (including the documentation we created)
 git add .
-
-# 3. Create your first commit
-git commit -m "Initial Commit: VidyaCore Foundation with 11-Layer Schema Documentation"
+git commit -m "Brief description of changes"
+git push origin main
 ```
 
 ---
 
-## 3. Connect to GitHub/GitLab
-If you have created a repository on GitHub, run:
-```bash
-# 4. Add your remote (Replace with your actual URL)
-git remote add origin https://github.com/yourusername/VidyaCore.git
-
-# 5. Push your code
-git branch -M main
-git push -u origin main
-```
-
----
-
-## 🏗️ Why "VidyaCore" as the name?
-- **Universal**: It works for the Library module, the Finance module, and the NGO module.
-- **Foundation**: It signals that this is the "Source Code" for all your future applications.
-- **Searchable**: It's a unique and meaningful name for your developer profile.
-
-**Your foundation is now locked and ready for expansion!**
+**Your project is now safe, versioned, and resilient.** 🌿🏛️💎🚀🚣‍♂️
