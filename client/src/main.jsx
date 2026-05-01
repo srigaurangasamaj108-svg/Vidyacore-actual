@@ -5,12 +5,17 @@ import App from './App.jsx';
 import { AuthProvider } from './context/AuthContext';
 import './index.css';
 
+import { TRPCProvider } from './components/trpc/TRPCProvider';
+
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
+      <TRPCProvider>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </TRPCProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
+

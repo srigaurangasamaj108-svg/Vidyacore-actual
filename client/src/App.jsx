@@ -8,6 +8,9 @@ import PrivateRoute from './components/PrivateRoute';
 import SavingsGoals from './pages/SavingsGoals';
 import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
+import WikiLayout from './pages/Wiki/WikiLayout';
+import WikiArticlePage from './pages/Wiki/WikiArticlePage';
+
 
 function App() {
   return (
@@ -20,7 +23,11 @@ function App() {
       <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
       <Route path="/goals" element={<PrivateRoute><SavingsGoals /></PrivateRoute>} />
       <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
+      <Route path="/wiki" element={<WikiLayout />}>
+        <Route path=":slug" element={<WikiArticlePage />} />
+      </Route>
       <Route path="*" element={<NotFound />} />
+
     </Routes>
   );
 }
