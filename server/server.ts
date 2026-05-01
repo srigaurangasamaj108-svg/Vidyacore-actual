@@ -11,9 +11,11 @@ import { createContext } from './trpc/trpc';
 dotenv.config();
 
 // Standard Express Routes (Importing as JS modules for now)
-const authRoutes = require("./routes/authRoutes");
-const transactionRoutes = require("./routes/transactionRoutes");
-const goalRoutes = require("./routes/goalRoutes");
+import authRoutes from "./routes/authRoutes";
+import transactionRoutes from "./routes/transactionRoutes";
+import goalRoutes from "./routes/goalRoutes";
+
+
 
 console.log("JWT_SECRET is:", process.env.JWT_SECRET);
 const app = express();
