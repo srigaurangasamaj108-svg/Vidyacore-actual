@@ -1,4 +1,4 @@
-# VidyaCore: 11-Layer Schema Breakdown 🧬🏛️
+# VidyaCore: 14-Layer Schema Breakdown 🧬🏛️
 
 VidyaCore uses a strictly layered architecture to separate structural navigation, canonical text, and interpretive expansion.
 
@@ -70,3 +70,28 @@ VidyaCore uses a strictly layered architecture to separate structural navigation
 ## 🧠 Layer 11: Taxonomy (Conceptual)
 - **Table**: `shastric_taxonomy`
 - **Role**: The "Knowledge Web." Hierarchical ontology of concepts (Atman, Dharma, etc.).
+
+---
+
+## 🔐 Layer 12: Authentication (Pratyaya)
+- **Table**: `users`
+- **Role**: The "Access." User management and role-based permissions (RBAC).
+
+---
+
+## 🚩 Layer 13: Quality Control (Shuddhi)
+- **Table**: `content_flag`
+- **Role**: The "Trust." Flags for AI-generated or disputed content.
+
+---
+
+## 📖 Layer 14: Wiki & Blogging (Vritta)
+- **Table**: `kalpataru_content`
+- **Role**: The "Educational Surface." Long-form articles and blogs for each Shastra.
+
+---
+
+## 💎 Layer 15: Integrity Wiring (Niyama)
+- **File**: `VIDYA_15_INTEGRITY.sql`
+- **Role**: The "Connector." Establishes all cross-layer Foreign Key relationships.
+

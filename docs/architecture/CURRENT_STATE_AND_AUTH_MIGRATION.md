@@ -13,25 +13,16 @@ Currently, the project has a fully functional **User Management System**:
     - Secure Frontend routing using an `AuthProvider`.
     - Backend middleware to protect routes.
 
----
+## 🟡 2. The Migration Progress
+We have successfully built the **PostgreSQL Bridge**.
 
-## 🛠️ 2. The Migration Objective
-We need to swap **Mongoose (Mongo)** for **Drizzle (Postgres)** while keeping the authentication flow exactly the same.
+### ✅ Step 1: Postgres User Table (COMPLETE)
+We have established a production-grade `vidya.users` table in File **`VIDYA_00_AUTH.sql`**.
+- **Features**: UUIDs, Role-Based Access (RBAC), Metadata support, and Auditing triggers.
+- **Drizzle Sync**: The table is already introspected and ready in `server/db/schema.js`.
 
-### Step 1: Postgres User Table
-Create a `users` table in your local PostgreSQL:
-```sql
-CREATE TABLE users (
-  id SERIAL PRIMARY KEY,
-  uuid UUID DEFAULT gen_random_uuid(),
-  email TEXT UNIQUE NOT NULL,
-  password TEXT NOT NULL,
-  created_at TIMESTAMP DEFAULT now()
-);
-```
-
-### Step 2: Swap the Logic
-Update `authController.js`:
+### 🔄 Step 2: Swap the Logic (UP NEXT)
+We are now ready to update `authController.js`:
 - **Old (Mongo)**: `User.findOne({ email })`
 - **New (Postgres)**: `db.select().from(users).where(eq(users.email, email))`
 
