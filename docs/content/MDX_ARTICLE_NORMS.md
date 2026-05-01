@@ -22,9 +22,16 @@ To create a premium, meditative experience:
 
 ---
 
-## 🔗 3. External Resource Linking
-- **Primary Source**: Always link to [Vedabase.io](https://vedabase.io) for Bhagavad Gita and Bhagavata Purana verses.
-- **Structure**: `[Verse Reference](https://vedabase.io/[book]/[c]/[v])`.
+## 🔗 3. External Resource Linking (Source Hierarchy)
+To maintain academic and spiritual authority, follow this strict hierarchy:
+1.  **Vedabase.io**: Mandatory for **Bhagavad Gita**, **Srimad Bhagavatam**, and **Chaitanya Charitamrita**.
+2.  **Wikipedia**: For secondary sources not available on Vedabase (e.g., specific Upanishads, Mahabharata, Puranas).
+3.  **Forbidden**: Never link to Google Search results or Knowledge Graph IDs.
+
+### Link Formatting:
+- **Vedabase**: `[Verse Ref](https://vedabase.io/en/library/[book]/[c]/[v])`
+- **Wikipedia**: `[Subject](https://en.wikipedia.org/wiki/[Subject])`
+
 
 ---
 

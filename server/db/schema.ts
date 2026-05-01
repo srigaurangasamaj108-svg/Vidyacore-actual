@@ -89,8 +89,11 @@ export const kalpataruInVidya = vidya.table("kalpataru", {
 	depth: integer().generatedAlwaysAs(sql`vidya.nlevel(path)`),
 	isLeaf: boolean("is_leaf").default(true),
 	name: text().notNull(),
+	nameDevanagari: text("name_devanagari"),
+	slug: text().notNull(),
 	description: text(),
 	nodeType: kalpataruNodeTypeInVidya("node_type").notNull(),
+
 	seq: integer().notNull(),
 	shastraPramana: shastraPramanaEnumInVidya("shastra_pramana"),
 	isGrantha: boolean("is_grantha").default(false),

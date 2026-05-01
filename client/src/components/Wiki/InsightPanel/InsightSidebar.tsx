@@ -1,23 +1,51 @@
 import React from 'react';
-import { User, BookOpen, ExternalLink, Tag } from 'lucide-react';
+import { useParams } from 'react-router-dom';
+import { trpc } from '../../../utils/trpc';
+
+
+import { Info, Hash, GitBranch, BookOpen, Tag, ExternalLink } from 'lucide-react';
 
 const InsightSidebar: React.FC = () => {
+  const { slug } = useParams<{ slug: string }>();
+  const { data: node, isLoading } = trpc.getNodeBySlug.useQuery({ slug: slug || '' }, { enabled: !!slug });
+
+  if (isLoading) return <div className="animate-pulse space-y-4">
+    <div className="h-6 bg-slate-200 rounded w-1/2" />
+    <div className="h-20 bg-slate-100 rounded" />
+  </div>;
+
+  if (!node) return (
+    <div className="text-slate-400 italic text-sm p-4 text-center border-2 border-dashed border-slate-100 rounded-xl">
+      Select a node from the Nigama Tree to manifest its insights.
+    </div>
+  );
+
   return (
-    <div className="space-y-8">
-      {/* Section 1: Source Metadata */}
+    <div className="space-y-8 animate-in fade-in duration-500">
       <section>
-        <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2 mb-4">
-          <BookOpen size={14} /> Shastric Context
+        <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2 mb-4">
+          <Info size={14} className="text-blue-500" /> Epistemic Summary
         </h3>
-        <div className="bg-white rounded-xl p-4 border border-slate-200 shadow-sm space-y-3">
-          <div className="flex justify-between items-center text-sm">
-            <span className="text-slate-500">Pramāna</span>
-            <span className="font-semibold text-slate-800">SHRUTI</span>
+        <p className="text-sm text-slate-600 leading-relaxed italic bg-blue-50/50 p-4 rounded-xl border border-blue-100/50 shadow-sm">
+          {node.description || 'No description available for this sacred node.'}
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+          <GitBranch size={14} className="text-blue-500" /> Shastric Metadata
+        </h3>
+        
+        <div className="grid gap-3">
+          <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-slate-100 shadow-sm">
+             <span className="text-xs text-slate-400">Node Type</span>
+             <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">{node.nodeType}</span>
           </div>
-          <div className="flex justify-between items-center text-sm">
-            <span className="text-slate-500">Author</span>
-            <span className="font-semibold text-slate-800">Apauruṣeya</span>
+          <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-slate-100 shadow-sm">
+             <span className="text-xs text-slate-400">System Code</span>
+             <span className="text-xs font-mono font-bold text-slate-600">{node.systemCode}</span>
           </div>
+
         </div>
       </section>
 
