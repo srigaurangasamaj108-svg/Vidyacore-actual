@@ -1,68 +1,60 @@
-# TrackMyFunds 💰
+# 🌿 VidyaCore Actual: The Knowledge Operating System 🏛️✨
 
-**TrackMyFunds** is a full-stack personal finance dashboard that helps users manage their income, expenses, savings goals, and transactions securely. Built using **React**, **Node.js**, **Express**, **MongoDB**, and **TailwindCSS**, it provides an intuitive and modern interface for smart money tracking.
-
----
-
-## Features ⚡
-
-| **Module**                    | **Description**                                                                                         | **Module**                    | **Description**                                 |
-|---------------------------------|---------------------------------------------------------------------------------------------------------|--------------------------------|-------------------------------------------------|
-| **Authentication**             | Handles user signup, login, JWT-based authentication, and logout.                                       | **Protected Routes**           | Secures routes so only logged-in users can access them. |
-| **Transaction Management**      | Allows adding, editing, deleting, and listing income and expense transactions.                         | **Savings Goals**              | Set and track savings goals with progress bars. |
-| **CSV Upload & Parsing**        | Upload and auto-parse bank statement CSV files.                                                        | **Data Visualization**         | Visual charts for income/expenses breakdown.    |
-| **Responsive UI**               | Built with TailwindCSS for clean, mobile-friendly design.                                              | **Profile Page**               | Displays user details and avatar.               |
-| **Error Handling**              | Gracefully handles client/server errors with user-friendly messages.                                   | **Export Options** (future)    | Planned feature for CSV/PDF exports.            |
-| **API-ready Design** (future)   | Planned integration with banking APIs / UPI (e.g. Plaid, FinBox).                                      | **Smart Alerts** (future)      | Planned smart spending alerts.                  |
+**VidyaCore** is a production-grade relational knowledge graph and educational platform designed to map the infinite geography of Vedic Shastra. It serves as the "Operating System" for the **Vedic Library**, providing a structured, machine-readable foundation for scriptures, commentaries, and philosophical ontologies.
 
 ---
 
-## Demo Images 🌟
+## 🏛️ 1. Core Architecture
+VidyaCore uses a unique **7-Layer Epistemic Model** to separate immutable canon from human interpretation:
 
-> Demo images to demonstrate how project actually looks
-
-
-| **Interface**         | **Preview** |
-|-----------------------|-------------|
-| **Login Page** | ![Missed to add Login Demo Image](https://forget_to_add_image.png) | |
-| **Registration Page** | ![Missed to add reg. Demo Image](https://forget_to_add_image.png) | |
-| **Dashboard**          | <img src="https://github.com/its-maneeshk/.assets/blob/26c5f31d92646ab403e03dabb28f51cfe21a35ad/TrackMyFunds-Personal_Finance_Dashboard/TrackMyFunds-Personal_Finance_Dashboard-Home.png" width="800px"> |
-| **Add Transaction**    | <img src="https://github.com/its-maneeshk/.assets/blob/26c5f31d92646ab403e03dabb28f51cfe21a35ad/TrackMyFunds-Personal_Finance_Dashboard/TrackMyFunds-Personal_Finance_Dashboard-addTrxn.png" width="800px"> |
-| **Savings Goals**      | <img src="https://github.com/its-maneeshk/.assets/blob/26c5f31d92646ab403e03dabb28f51cfe21a35ad/TrackMyFunds-Personal_Finance_Dashboard/TrackMyFunds-Personal_Finance_Dashboard-savingGoal.png" width="800px"> |
-| **Profile**            | <img src="https://github.com/its-maneeshk/.assets/blob/26c5f31d92646ab403e03dabb28f51cfe21a35ad/TrackMyFunds-Personal_Finance_Dashboard/TrackMyFunds-Personal_Finance_Dashboard-profile.png" width="800px"> |
-
-
+1.  **Structure**: The `Kalpataru` tree (Veda, Shakha, Purana).
+2.  **Canon**: The `Mula` (Original Verses/Mantras).
+3.  **Interpretation**: The `Vyakhya` (Commentaries and Tikas).
+4.  **Intelligence**: The `Taxonomy` (Ontological Knowledge Graph).
+5.  **Authority**: The `Vedic Person` & `Sampradaya` (Lineage tracking).
+6.  **Curation**: `Edition` & `Language` (Manuscript precision).
+7.  **Trust**: `Quality Flags` & `AI Embeddings`.
 
 ---
 
-## Tech Stack 🛠
+## 🛠️ 2. Parallel Database Engine
+VidyaCore operates on a dual-engine architecture to ensure both stability and high-performance retrieval:
 
-- **Frontend**: React.js, React Router, TailwindCSS
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB (Mongoose)
-- **Authentication**: JWT (JSON Web Tokens), bcrypt for password hashing
-- **Deployment**: Vercel (frontend), Render/Heroku/other (backend)
+- **🐘 PostgreSQL (Primary)**: Houses the complex 23-table Relational Knowledge Graph. Managed via **Drizzle ORM**.
+- **🍃 MongoDB (Legacy)**: Maintained as a stable layer for donation tracking and legacy user data.
 
 ---
 
+## 📜 3. Documentation Guide (Source of Truth)
+The project documentation is organized into thematic clusters within the [`/docs`](./docs) folder:
 
-## Contributing 🛂
-Contributions are welcome! If you would like to contribute to this, please fork the repository, create a new branch, and submit a pull request. I encourage suggestions for new features, improvements, or bug fixes.
+### 🏛️ [Architecture](./docs/architecture)
+- **[VidyaCore Foundation](./docs/architecture/VIDYA_CORE_FOUNDATION.md)**: The epistemic philosophy.
+- **[Knowledge Architecture](./docs/architecture/VIDYA_KNOWLEDGE_ARCHITECTURE.md)**: The 7-layer design.
+- **[Backend Design](./docs/architecture/BACKEND_ARCHITECTURE.md)**: Server and API logic.
+
+### 🐘 [Database & Schema](./docs/database)
+- **[Master Schema Breakdown](./docs/database/VIDYA_SCHEMA_BREAKDOWN.md)**: Details of the 23 tables.
+- **[Postgres & Drizzle Workflow](./docs/database/POSTGRES_DRIZZLE_WORKFLOW.md)**: How the DB and ORM are synced.
+- **[Database Credentials](./docs/database/DATABASE_CREDENTIALS.md)**: Access keys for local/cloud instances.
+
+### ⚙️ [Setup & Workflows](./docs/guides)
+- **[Schema Setup Guide](./vidya_schema_v2/SCHEMA_SETUP_GUIDE.md)**: The 00-15 deployment sequence.
+- **[Git Save Guide](./docs/guides/GIT_SAVE_GUIDE.md)**: Professional version control workflow.
+- **[Deployment Manual](./docs/guides/DEPLOYMENT.md)**: Production release instructions.
+
+### 📖 [Content & Ingestion](./docs/content)
+- **[Kalpataru Ingestion Plan](./docs/content/KALPATARU_INGESTION_PLAN.md)**: Strategies for populating the tree.
+- **[Blogging & Wiki System](./docs/content/VIDYA_BLOGGING_SYSTEM.md)**: Turning the tree into an educational platform.
 
 ---
 
-<p align="center">
-  Made with ❤️ by <a href="https://www.instagram.com/its_maneeshk_/" target="_blank">Manish Patel</a> | 
-  <a href="mailto:maneeshkurmii@gmail.com">Email Me</a> | 
-  <a href="https://www.linkedin.com/in/itsmaneeshk/" target="_blank">LinkedIn</a>
-</p>
+## 🚀 4. Technical Stack
+- **Frontend**: React.js, TailwindCSS.
+- **Backend**: Node.js, Express.js.
+- **ORM**: Drizzle ORM (Postgres), Mongoose (Mongo).
+- **Search**: PostgreSQL Vector Embeddings (IVFFlat) for AI similarity.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Code-JavaScript-yellow?style=flat-square&logo=javascript" alt="JavaScript Badge">
-  <img src="https://img.shields.io/badge/Tool-Git-orange?style=flat-square&logo=git" alt="Git Badge">
-  <img src="https://img.shields.io/badge/Project-Open%20Source-brightgreen?style=flat-square" alt="Open Source Badge">
-</p>
+---
 
-<p align="center">
-  🚀 Follow my work at <a href="https://github.com/its-maneeshk" target="_blank">GitHub</a> and let's build something amazing together!
-</p>
+**VidyaCore is a work of digital devotion, built to preserve and project the light of Shastra for generations.** 🌿🏛️✨💎
