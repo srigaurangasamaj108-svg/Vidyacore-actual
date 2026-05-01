@@ -41,7 +41,35 @@ To prevent future "fidgeting" from breaking the system, the following principles
 
 ---
 
+## 🔱 The 4-Segment System Code Protocol: `[BRN]-[CAT]-[BOK]-[VER]`
+
+To ensure the Knowledge Graph remains stable across database migrations and ID shifts, every node must be assigned an immutable **System Code** following this convention:
+
+1.  **[BRN] (Branch - 3 Letters)**: The primary knowledge stream.
+    *   `MUL`: Mula (The Root/Absolute)
+    *   `NIG`: Nigama (Revelation)
+    *   `AGM`: Agama (Applied Tradition)
+2.  **[CAT] (Category - 3 Letters)**: The type of literature.
+    *   `KRS`: Krishna (The Source)
+    *   `VVM`: Veda Vāṅmaya (Total Corpus)
+    *   `PUR`: Purana
+    *   `TTR`: Tantra
+    *   `SRT`: Shruti
+3.  **[BOK] (Book/Node ID - 3 Letters)**: The unique identifier for the entity.
+    *   `BHG`: Bhagavata
+    *   `PAD`: Padma
+    *   `VSN`: Vishnu
+4.  **[VER] (Version/Sequence - 2 Digits)**: To handle multiple editions or sequential parts (e.g., `01`, `02`).
+
+### 🏛️ Implementation Strategy
+*   **Immutability**: Once assigned, a system code must NEVER change.
+*   **Frontend Binding**: All deep links and scholarly references should target the `system_code`, not the `id`.
+*   **Verification**: Every new ingestion must include a check for system code uniqueness.
+
+---
+
 ## ✅ Practical Solutions (Summary)
+
 
 *   **UI stuck in loading?** Check server terminal for BigInt serialization errors.
 *   **Tree is empty?** Check if `parentId` (camelCase) is being used in the mapping.
